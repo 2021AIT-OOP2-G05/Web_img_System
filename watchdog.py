@@ -12,7 +12,7 @@ target_dir = "監視したいフォルダのパス"
 #LoggingEvenHandlerを上書きして動作を変更
 class LoggingEventHandler2(FileSystemEventHandler):
     def on_created(self, event):    
-        print(event.src_path+"が生成されました。")#debug用
+        print(event.src_path+"が生成されました。")#debug用おk
         #ファイルに画像が入ってきた時に画像処理をするプログラムを起動
 
 if __name__ == "__main__":

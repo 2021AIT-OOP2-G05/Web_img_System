@@ -12,18 +12,9 @@ app.config["JSON_AS_ASCII"] = False  # 日本語などのASCII以外の文字列
 def index():
     return render_template("index.html")
 
-@app.route('/address', methods=["POST"])
-def address_register():
-  
 
 
 
-
-# @app.route('/upload_data', methods=["POST"])
-# def upload_data():
-#   #フォルダを開く
-#   #postされてきた画像を取得する
-#   #画像をぶち込む
 @app.route("/uploads/",methods=["POST"])
 def upload():
     if ("file" in request.files): #存在確認
@@ -33,7 +24,11 @@ def upload():
         return redirect("/")
     else: return redirect("/")
   
-
+@app.route("/img_get/",methods=["GET"])
+def img_get():
+    #
+    
+    return render_template("upload.html")
 
 if __name__ == "__main__":
     # debugモードが不要の場合は、debug=Trueを消してください

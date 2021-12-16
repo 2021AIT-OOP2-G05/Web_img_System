@@ -28,21 +28,19 @@ def upload():
 @app.route("/uploads_get/")
 def uploads_get():
     files = glob.glob("./uploads/*")
-    fileURL = []
-    print(files)
+    fileURLlist = []
     for file in files:
-        fileURL.append("/uploaded/" + os.path.basename(file))
-    print(fileURL)
+        fileURLlist.append("/uploaded/" + os.path.basename(file))
+    print(fileURLlist)
 
-    return render_template("upload.html", file_list = fileURL)
+    return render_template("upload.html", file_list = fileURLlist)
 
 #cssを返す
-@app.route('/uploaded/<path:filename>')
-def uploaded_file(filename):
-    return send_from_directory('./uploads', filename)
+@app.route('/uploads_get/<path:filename>')
+def send_css(filename):
+    return send_from_directory('./templates', filename)
 
-
-
+#画像を返す
 @app.route('/uploaded/<path:filename>')
 def uploaded_file(filename):
     return send_from_directory('./uploads', filename)

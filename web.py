@@ -10,11 +10,8 @@ app.config["JSON_AS_ASCII"] = False  # 日本語などのASCII以外の文字列
 def index():
     return render_template("index.html")
 
-@app.route('/upload_data', methods=["POST"])
-def upload_data():
-  #フォルダを開く
-  #postされてきた画像を取得する
-  #画像をぶち込む
+@app.route('/address', methods=["POST"])
+def address_register():
   
 
 

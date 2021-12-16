@@ -31,34 +31,30 @@ def uploads_get():
     fileURLlist = []
     for file in files:
         fileURLlist.append("/uploaded/" + os.path.basename(file))
-    print(fileURLlist)
 
     return render_template("upload.html", title = 'uploads', file_list = fileURLlist)
 
 
 #gray_fileの画像を取得してupload.htmlと一緒に返す
 @app.route("/gray_file_get/")
-def uploads_get():
+def gray_file_get():
     files = glob.glob("./gray_file/*")
     fileURLlist = []
     for file in files:
         fileURLlist.append("/grayscaling/" + os.path.basename(file))
-    print(fileURLlist)
 
     return render_template("upload.html", title = 'gray_file', file_list = fileURLlist)
 
 
 #Canny_fileの画像を取得してupload.htmlと一緒に返す
 @app.route("/Canny_file_get/")
-def uploads_get():
+def Canny_file_get():
     files = glob.glob("./Canny_file/*")
     fileURLlist = []
     for file in files:
         fileURLlist.append("/Canny_filter/" + os.path.basename(file))
-    print(fileURLlist)
 
     return render_template("upload.html", title = 'Canny_file', file_list = fileURLlist)
-
 
 
 #cssを返す
@@ -69,19 +65,19 @@ def send_css(filename):
 
 #uploadsの画像を返す
 @app.route('/uploaded/<path:filename>')
-def uploaded_file(filename):
+def uploaded_uploads(filename):
     return send_from_directory('./uploads', filename)
 
 
 #gray_fileの画像を返す
 @app.route('/grayscaling/<path:filename>')
-def uploaded_file(filename):
+def uploaded_gray_file(filename):
     return send_from_directory('./gray_file', filename)
 
 
 #gray_fileの画像を返す
 @app.route('/Canny_filter/<path:filename>')
-def uploaded_file(filename):
+def uploaded_Canny_file(filename):
     return send_from_directory('./Canny_file', filename)
 
 

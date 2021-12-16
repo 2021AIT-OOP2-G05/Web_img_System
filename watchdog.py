@@ -60,7 +60,7 @@ class LoggingEventHandler2(FileSystemEventHandler):
 if __name__ == "__main__":
     path = target_dir #監視ファイルのパス
 
-        print("生成されました。" + event.src_path)
+    print("生成されました。" + event.src_path)
 
 if __name__ == "__main__":
     path = target_dir

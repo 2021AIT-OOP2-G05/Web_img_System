@@ -2,6 +2,7 @@ from flask import Flask, request, redirect ,render_template, jsonify
 import json  # Python標準のJSONライブラリを読み込んで、データの保存等に使用する
 import os
 
+
 app = Flask(__name__)
 app.config["JSON_AS_ASCII"] = False  # 日本語などのASCII以外の文字列を返したい場合は、こちらを設定しておく
 
@@ -10,6 +11,7 @@ app.config["JSON_AS_ASCII"] = False  # 日本語などのASCII以外の文字列
 @app.route('/')
 def index():
     return render_template("index.html")
+
 
 # @app.route('/upload_data', methods=["POST"])
 # def upload_data():
@@ -25,8 +27,6 @@ def upload():
         return redirect("/")
     else: return redirect("/")
   
-
-
 
 
 if __name__ == "__main__":

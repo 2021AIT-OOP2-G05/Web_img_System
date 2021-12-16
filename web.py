@@ -33,7 +33,7 @@ def uploads_get():
         fileURLlist.append("/uploaded/" + os.path.basename(file))
     print(fileURLlist)
 
-    return render_template("upload.html", file_list = fileURLlist)
+    return render_template("upload.html", title = 'uploads', file_list = fileURLlist)
 
 
 #gray_fileの画像を取得してupload.htmlと一緒に返す
@@ -45,7 +45,7 @@ def uploads_get():
         fileURLlist.append("/grayscaling/" + os.path.basename(file))
     print(fileURLlist)
 
-    return render_template("upload.html", file_list = fileURLlist)
+    return render_template("upload.html", title = 'gray_file', file_list = fileURLlist)
 
 
 #Canny_fileの画像を取得してupload.htmlと一緒に返す
@@ -57,7 +57,7 @@ def uploads_get():
         fileURLlist.append("/Canny_filter/" + os.path.basename(file))
     print(fileURLlist)
 
-    return render_template("upload.html", file_list = fileURLlist)
+    return render_template("upload.html", title = 'Canny_file', file_list = fileURLlist)
 
 
 

@@ -1,6 +1,7 @@
 from flask import Flask, request, redirect ,render_template, jsonify
 import json  # Python標準のJSONライブラリを読み込んで、データの保存等に使用する
 import os
+import glob
 
 
 app = Flask(__name__)
@@ -24,11 +25,16 @@ def upload():
         return redirect("/")
     else: return redirect("/")
   
-@app.route("/img_get/",methods=["GET"])
-def img_get():
+@app.route("/upload_get/")
+def uploads_get():
     #
-    
-    return render_template("upload.html")
+    files = glob.glob("./uploads/*")
+    filename = []
+    print(files)
+    for file in files:
+        filename.append("/uploads/" + os.path.basename(file))
+
+    return render_template("upload.html", file_list = filename)
 
 if __name__ == "__main__":
     # debugモードが不要の場合は、debug=Trueを消してください

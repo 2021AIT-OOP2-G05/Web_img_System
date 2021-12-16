@@ -10,8 +10,10 @@
 </head>
 <body>
     <h1>Uploads</h1>
+    {% for file in file_list %}
     <div id="imglist">
-        <img src="./uploads/01.jpg">
+        <img src="{{ file }}">
     </div>
+    {% endfor %}
 </body>
 </html>

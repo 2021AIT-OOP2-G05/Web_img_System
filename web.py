@@ -12,6 +12,12 @@ app.config["JSON_AS_ASCII"] = False  # 日本語などのASCII以外の文字列
 def index():
     return render_template("index.html")
 
+@app.route('/address', methods=["POST"])
+def address_register():
+  
+
+
+
 
 # @app.route('/upload_data', methods=["POST"])
 # def upload_data():

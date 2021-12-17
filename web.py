@@ -13,11 +13,7 @@ def index():
     return render_template("index.html")
 
 
-# @app.route('/upload_data', methods=["POST"])
-# def upload_data():
-#   #フォルダを開く
-#   #postされてきた画像を取得する
-#   #画像をぶち込む
+
 @app.route("/uploads/",methods=["POST"])
 def upload():
     if ("file" in request.files): #存在確認

@@ -85,8 +85,6 @@ def uploaded_Canny_file(filename):
     return send_from_directory('./Canny_file', filename)
 
 
-
-
 if __name__ == "__main__":
     # debugモードが不要の場合は、debug=Trueを消してください
     app.run(debug=True)

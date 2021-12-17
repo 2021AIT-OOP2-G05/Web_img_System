@@ -14,8 +14,9 @@ def index():
 
 @app.route('/upload_list/')
 def upload_list_link():
-    
-    return render_template("upload.html")
+    imglist = os.listdir(path='./uploads/')
+    print(imglist)
+    return render_template("upload.html", imglist=imglist)
 
 
 @app.route("/uploads/",methods=["POST"])

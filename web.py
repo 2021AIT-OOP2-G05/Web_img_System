@@ -23,9 +23,14 @@ def upload():
     if ("file" in request.files): #存在確認
         upload_folder = "./uploads/"
         file = request.files["file"]
+
+        if '' == file.filename:
+            return render_template("index.html", error="ファイルを指定してください。")
+
         file.save(os.path.join(upload_folder ,file.filename)) #file.filenameでファイル名取得
-        return redirect("/")
-    else: return redirect("/")
+        return render_template("index.html", message="ファイルのアップロードしました。")
+
+    else: return render_template("index.html", message="ファイルのアップロードできませんでした。")
   
 
 

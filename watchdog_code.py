@@ -20,10 +20,22 @@ class LoggingEventHandler2(FileSystemEventHandler):
     def on_modified(self, event):    #on_created -> on_modifiedに変更
         filepath = event.src_path
         filename = os.path.basename(filepath)
-        gray_scale(filename)    #関数を実行
-        canny_filta(filename)   #関数を実行
+        if filename in target_dir:
+            return
 
-        print(filepath+"が生成されました。")#debug用おk
+        print("filepath: ", filepath)
+        print("filename: ", filename)
+
+        try:
+            gray_scale(filepath)    #関数を実行
+            canny_filta(filepath)   #関数を実行
+
+        except:
+            print("画像処理できませんでした。")
+
+
+
+        print(filename+"が追加されました。")#debug用おk
         #ファイルに画像が入ってきた時に画像処理をするプログラムを起動
         
 
@@ -31,7 +43,7 @@ class LoggingEventHandler2(FileSystemEventHandler):
 
 if __name__ == "__main__":
     path = target_dir #監視フォルダのパス
-
+    print("------------------------------------------")
     event_handler = LoggingEventHandler2()
     observer = Observer()       #監視オブジェクト生成
     observer.schedule(          #監視設定

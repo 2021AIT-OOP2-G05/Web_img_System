@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" href="./img_style.css">
+    <!-- <link rel="stylesheet" href="./img_style.css"> -->
 
     <title>Upload Files</title>
 
@@ -17,19 +17,26 @@
         <div class="container">
             <span class="navbar-brand mb-0 h1">画像処理アプリ</span>
             <ul class="nav">
-                <li class="nav-item"><a class="nav-link" href="/">アップロード</a></li>
-                <li class="nav-item"><a class="nav-link" href="/uploads_get/">アップロードリスト</a></li>
-                <li class="nav-item"><a class="nav-link" href="/gray_file_get/">グレースケール</a></li>
+                <li class="nav-item"><a class="nav-link" href="/">Upload</a></li>
+                <li class="nav-item"><a class="nav-link" href="/uploads_get/">List</a></li>
+                <li class="nav-item"><a class="nav-link" href="/gray_file_get/">Gray</a></li>
+                <li class="nav-item"><a class="nav-link" href="/Canny_file_get/">Canny</a></li>
             </ul>
         </div>
     </nav>
     
     <div class="container">
-        {% for file in file_list %}
-        <div id="imglist">
-            <img src="{{ file }}">
-        </div>
-        {% endfor %}
+        <h1>{{ title }}</h1>
+        <div class="container">
+            <div class="row">
+                {% for file in file_list %}
+                <div id="imglist" class="col d-flex align-items-center">
+                    <img src="{{ file }}" class="mx-auto" style="width: auto;height: 200; margin:10px">
+                </div>
+                {% endfor %}
+            </div>
+          </div>
+
     </div>
 
 </body>

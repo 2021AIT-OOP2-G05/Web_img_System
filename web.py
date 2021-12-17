@@ -19,9 +19,14 @@ def upload():
     if ("file" in request.files): #存在確認
         upload_folder = "./uploads/"
         file = request.files["file"]
-        file.save(os.path.join(upload_folder ,file.filename)) #file.filenameでファイル名取得
-        return redirect("/")
-    else: return redirect("/")
+
+        if '' == file.filename:
+            return render_template("index.html", error="ファイルを指定してください。")
+
+            file.save(os.path.join(upload_folder ,file.filename)) #file.filenameでファイル名取得
+            return render_template("index.html", message="ファイルのアップロードしました。")
+
+        else: return render_template("index.html", message="ファイルのアップロードできませんでした。")
 
 
 #uploadsの画像を取得してupload.htmlと一緒に返す
@@ -79,6 +84,7 @@ def uploaded_gray_file(filename):
 @app.route('/Canny_filter/<path:filename>')
 def uploaded_Canny_file(filename):
     return send_from_directory('./Canny_file', filename)
+
 
 
 

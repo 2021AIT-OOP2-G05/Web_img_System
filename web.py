@@ -12,12 +12,6 @@ app.config["JSON_AS_ASCII"] = False
 def index():
     return render_template("index.html")
 
-@app.route('/upload_list/')
-def upload_list_link():
-    imglist = os.listdir(path='./uploads/')
-    print(imglist)
-    return render_template("upload.html", imglist=imglist)
-
 
 @app.route("/uploads/",methods=["POST"])
 def upload():

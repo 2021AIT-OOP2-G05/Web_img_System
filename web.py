@@ -22,10 +22,10 @@ def upload():
         if '' == file.filename:
             return render_template("index.html", error="ファイルを指定してください。")
 
-            file.save(os.path.join(upload_folder ,file.filename)) #file.filenameでファイル名取得
-            return render_template("index.html", message="ファイルのアップロードしました。")
+        file.save(os.path.join(upload_folder ,file.filename)) #file.filenameでファイル名取得
+        return render_template("index.html", message="ファイルのアップロードしました。")
 
-        else: return render_template("index.html", message="ファイルのアップロードできませんでした。")
+    else: return render_template("index.html", message="ファイルのアップロードできませんでした。")
 
 
 #uploadsの画像を取得してupload.htmlと一緒に返す

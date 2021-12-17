@@ -18,6 +18,7 @@ target_dir = "uploads" #uploadsフォルダを監視フォルダに指定
 class LoggingEventHandler2(FileSystemEventHandler):
     #ファイルやフォルダが更新された場合
     def on_modified(self, event):    #on_created -> on_modifiedに変更
+        print("------------------------------------------")
         filepath = event.src_path
         filename = os.path.basename(filepath)
         if filename in target_dir:
@@ -43,7 +44,6 @@ class LoggingEventHandler2(FileSystemEventHandler):
 
 if __name__ == "__main__":
     path = target_dir #監視フォルダのパス
-    print("------------------------------------------")
     event_handler = LoggingEventHandler2()
     observer = Observer()       #監視オブジェクト生成
     observer.schedule(          #監視設定

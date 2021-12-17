@@ -22,8 +22,12 @@
         </div>
     </nav>
     
-    <div class="imglist container">
-        {{ imglist }}
+    <div class="container">
+        {% for file in file_list %}
+        <div id="imglist">
+            <img src="{{ file }}">
+        </div>
+        {% endfor %}
     </div>
 
 </body>

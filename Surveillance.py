@@ -1,7 +1,6 @@
 #wathdogを使用する際はターミナル等で pip install watchdog　を実行しインストールしないと使えないかも?しれません。
 
 import time
-import sys
 import os
 from watchdog.events import FileSystemEventHandler
 from watchdog.observers import Observer

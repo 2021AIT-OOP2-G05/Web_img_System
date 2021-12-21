@@ -58,4 +58,3 @@ if __name__ == "__main__":
     except KeyboardInterrupt:#　^+Cで終了
         observer.stop()
         observer.join()
-

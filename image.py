@@ -34,7 +34,7 @@ def mozaic_filta(image):
 		mosaic = cv2.resize(small_pic,(w,h))
 		img_mozaic[y:y+h, x:x+w]=mosaic
 
-	cv2.imwrite(f'Mozaic_file/{os.path.basename(image)}', img_mozaic)
+	cv2.imwrite(f'mosaic_file/{os.path.basename(image)}', img_mozaic)
 
 
 # 動作確認用

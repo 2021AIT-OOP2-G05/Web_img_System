@@ -61,10 +61,15 @@ def Canny_file_get():
     return render_template("upload.html", title = 'Canny_file', file_list = fileURLlist)
 
 
-#cssを返す
-@app.route('/uploads_get/<path:filename>')
-def send_css(filename):
-    return send_from_directory('./templates', filename)
+#mosaic_fileの画像を取得してupload.htmlと一緒に返す
+@app.route("/mosaic_file_get/")
+def mosaic_file_get():
+    files = glob.glob("./mosaic_file/*")
+    fileURLlist = []
+    for file in files:
+        fileURLlist.append("/mosaic_filter/" + os.path.basename(file))
+
+    return render_template("upload.html", title = 'mosaic_file', file_list = fileURLlist)
 
 
 #uploadsの画像を返す
@@ -83,6 +88,12 @@ def uploaded_gray_file(filename):
 @app.route('/Canny_filter/<path:filename>')
 def uploaded_Canny_file(filename):
     return send_from_directory('./Canny_file', filename)
+
+
+#mosaic_fileの画像を返す
+@app.route('/mosaic_filter/<path:filename>')
+def uploaded_mosaic_file(filename):
+    return send_from_directory('./mosaic_file', filename)
 
 
 if __name__ == "__main__":

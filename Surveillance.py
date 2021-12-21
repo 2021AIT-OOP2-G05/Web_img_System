@@ -6,7 +6,7 @@ from watchdog.events import FileSystemEventHandler
 from watchdog.observers import Observer
 
 
-from image import gray_scale, canny_filta #画像処理用のプログラム
+from image import gray_scale, canny_filta ,mozaic_filta#画像処理用のプログラム
 
 #import 実行したい画像処理プログラム
 
@@ -29,6 +29,7 @@ class LoggingEventHandler2(FileSystemEventHandler):
         try:
             gray_scale(filepath)    #関数を実行
             canny_filta(filepath)   #関数を実行
+            mozaic_filta(filepath)  #関数を実行
 
         except:
             print("画像処理できませんでした。")

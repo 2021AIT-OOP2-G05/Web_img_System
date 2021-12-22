@@ -23,15 +23,18 @@ def canny_filta(image):
 
 def mozaic_filta(image):
 	cascade_file= "haarcascade_frontalface_default.xml"
+    
 	clas = cv2.CascadeClassifier(cascade_file)
-	img_mozaic = cv2.imread(image)
+    
+	img_mozaic = cv2.imread(image, 0)
+    
 
-	face_list = clas.detectMultiScale(img_mozaic, scaleFactor = 1.1, minSize=(30,30))
+	face_list = clas.detectMultiScale(img_mozaic)
 
 	for x, y, w, h in face_list:
 		face= img_mozaic[y:y+h, x:x+w]
-		small_pic = cv2.resize(face, (8,8))
-		mosaic = cv2.resize(small_pic,(w,h))
+		small_pic = cv2.resize(face, (w//8,h//8))
+		mosaic = cv2.resize(small_pic,(w,h),interpolation=cv2.INTER_NEAREST)
 		img_mozaic[y:y+h, x:x+w]=mosaic
 
 	cv2.imwrite(f'mosaic_file/{os.path.basename(image)}', img_mozaic)

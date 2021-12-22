@@ -22,19 +22,29 @@ def canny_filta(image):
 #モザイク処理
 
 def mozaic_filta(image):
-	cascade_file= "haarcascade_frontalface_default.xml"
-	clas = cv2.CascadeClassifier(cascade_file)
-	img_mozaic = cv2.imread(image)
+    img_origin = cv2.imread(image)
+    img_gray = cv2.imread(image,0)
 
-	face_list = clas.detectMultiScale(img_mozaic, scaleFactor = 1.1, minSize=(30,30))
+    img_rect = img_origin.copy()
+    img_mosaic = img_origin.copy()
 
-	for x, y, w, h in face_list:
-		face= img_mozaic[y:y+h, x:x+w]
-		small_pic = cv2.resize(face, (8,8))
-		mosaic = cv2.resize(small_pic,(w,h))
-		img_mozaic[y:y+h, x:x+w]=mosaic
+    cascade_file= "haarcascade_frontalface_default.xml"
+    clas = cv2.CascadeClassifier(cascade_file)
+    face_list = clas.detectMultiScale(img_gray)
 
-	cv2.imwrite(f'mosaic_file/{os.path.basename(image)}', img_mozaic)
+    if len(face_list) > 0:
+        for face in face_list:
+            x, y, w, h = face
+
+            # 検出した顔の範囲を四角で囲む
+            img_rect = cv2.rectangle(img_rect, (x, y), (x+w, y+h), color=(255, 255, 255), thickness=2)
+
+            # 検出した顔の範囲をモザイクする
+            mosaic = img_mosaic[y:y+h, x:x+w]
+            mosaic = cv2.resize(mosaic, (w//50, h//50))
+            mosaic = cv2.resize(mosaic, (w, h), interpolation=cv2.INTER_NEAREST)
+            img_mosaic[y:y+h, x:x+w] = mosaic 
+    cv2.imwrite(f'mosaic_file/{os.path.basename(image)}', img_mosaic)
 
 
 # 動作確認用
